@@ -1,0 +1,93 @@
+<section class=" job-bg ad-details-page">
+    <div class="container">
+      <div class="breadcrumb-section">
+        <!-- breadcrumb -->
+        <ol class="breadcrumb">
+          <li>
+            <a routerLink="/home">Dashboard</a>
+          </li>
+          <li> Student</li>
+        </ol>
+        <!-- breadcrumb -->
+        <h2 class="title"> Student</h2>
+      </div>
+      <!-- banner -->
+      <div class="job-postdetails post-resume">
+        <div class="row">
+          <div class="col-md-3 col-sm-4">
+            <app-side-menu></app-side-menu>
+        </div>
+          <div class="col-md-9 clearfix">
+            <form novalidate (ngSubmit)="save()" [formGroup]="postForm">
+              <fieldset>
+                <router-outlet>
+                  <span *ngIf="showLoader" class="loading">Loading...</span>
+                </router-outlet>
+                <div class="section express-yourself">
+                  <h4>Field marked with <span style="color:red">*</span> are required fields</h4>
+                  <div class="row form-group">
+                    <label class="col-sm-4 label-title" for="jobtitle"> First Name <span
+                        style="color:red">*</span></label>
+                    <div class="col-sm-8">
+                      <input type="text"  required formControlName="first" id="first" class="form-control"
+                        placeholder="First Name"/>
+                      <span class="help-block" style="color:red" *ngIf="postForm.controls.first.touched && postForm.controls.first.errors != null">
+                          Please enter  First Name.
+                      </span>
+                    </div>
+                  </div>
+                  <div class="row form-group">
+                    <label class="col-sm-4 label-title">Last Name <span style="color:red">*</span></label>
+                    <div class="col-sm-8">
+                      <input type="text" formControlName="last" class="form-control" placeholder="Last Name"/>
+                      <span class="help-block" style="color:red">
+                        <span *ngIf="postForm.controls.last.touched && postForm.controls.last.errors != null">
+                          Enter  Last Name
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                  
+                  <div class="row form-group">
+                    <label class="col-sm-4 label-title">Date Of Birth</label>
+                    <div class="col-sm-8">
+                      <input type="date" formControlName="dob" class="form-control" placeholder="DateOfBirth"/>
+                      <span class="help-block" style="color:red">
+                        <span *ngIf="postForm.controls.dob.touched && postForm.controls.dob.errors != null">
+                          Enter Date of Birth
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="row form-group">
+                    <label class="col-sm-4 label-title">Class</label>
+                    <div class="col-sm-8">
+                      <select *ngIf = "classesData.length > 0 ; else content"  id="cls" formControlName="cls" class="form-control">
+                        <option value="" disabled>Select ..</option>
+                        <option *ngFor="let cls of classesData; let i = index" value='{{cls.id}}'>{{cls.name}}</option>
+                      </select>
+                      <span class="help-block" style="color:red">
+                        <span *ngIf="postForm.controls.cls.touched && postForm.controls.cls.errors != null">
+                          Please Select Class
+                        </span>
+                      </span>
+			          <ng-template #content >
+                          <h3 style="color:red">* Sorry! All classes are unavailable, you can't register new student</h3>
+                       </ng-template> 
+                      
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+            </form>
+            <!-- form -->
+            <div class="buttons">
+              <button *ngIf="!newFlag" (click)="save()" class="btn btn-primary" [disabled]="!postForm.valid">Update</button>
+              <button *ngIf="newFlag" (click)="saveNew()" class="btn btn-primary" [disabled]="!postForm.valid">Save</button>
+              <button (click)="clear()" class="btn btn-danger">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

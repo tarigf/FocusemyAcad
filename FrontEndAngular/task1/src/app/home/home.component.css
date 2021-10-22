@@ -1,0 +1,7 @@
+.button {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.add {
+  text-align: right;
+}

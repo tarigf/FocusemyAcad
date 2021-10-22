@@ -1,0 +1,98 @@
+<section class=" job-bg ad-details-page">
+  <div class="container">
+    <div class="breadcrumb-section">
+      <!-- breadcrumb -->
+      <ol class="breadcrumb">
+        <li>
+          <a routerLink="/dashboard">Dashboard</a>
+        </li>
+        <li> Classes</li>
+      </ol>
+      <!-- breadcrumb -->
+      <h2 class="title"> Classes</h2>
+    </div>
+    <!-- banner -->
+    <div class="job-postdetails post-resume">
+      <div class="row">
+        <div class="col-md-3 col-sm-4">
+          <app-side-menu></app-side-menu>
+      </div>
+        <div class="col-md-9 clearfix">
+          <form novalidate (ngSubmit)="save()" [formGroup]="postForm">
+            <fieldset>
+              <router-outlet>
+                <span *ngIf="showLoader" class="loading">Loading...</span>
+              </router-outlet>
+              <div class="section express-yourself">
+                <h4>Field marked with <span style="color:red">*</span> are required fields</h4>
+                <div class="row form-group">
+                  <label class="col-sm-4 label-title" for="jobtitle"> Code <span
+                      style="color:red">*</span></label>
+                  <div class="col-sm-8">
+                    <input type="text"  required formControlName="code" id="code" class="form-control"
+                      placeholder="#"/>
+                    <span class="help-block" style="color:red" *ngIf="postForm.controls.code.touched && postForm.controls.code.errors != null">
+                        Please enter Class Code.
+                    </span>
+                  </div>
+                </div>
+                <div class="row form-group">
+                  <label class="col-sm-4 label-title">Class Name <span style="color:red">*</span></label>
+                  <div class="col-sm-8">
+                    <input type="text" formControlName="name" class="form-control" placeholder="Class Name"/>
+                    <span class="help-block" style="color:red">
+                      <span *ngIf="postForm.controls.name.touched && postForm.controls.name.errors != null">
+                        Enter  Class Name
+                      </span>
+                    </span>
+                  </div>
+                </div>
+                <div class="row form-group">
+                  <label class="col-sm-4 label-title" for="jobtitle"> Maximum Students <span
+                      style="color:red">*</span></label>
+                  <div class="col-sm-8">
+                    <input type="text"  required formControlName="maximum_students" id="maximum_students" class="form-control"
+                      placeholder="10"/>
+                    <span class="help-block" style="color:red" *ngIf="postForm.controls.maximum_students.touched && postForm.controls.maximum_students.errors != null">
+                        Please enter maximum students Number.
+                    </span>
+                  </div>
+                </div>
+                <div class="row form-group">
+                  <label class="col-sm-4 label-title">Description</label>
+                  <div class="col-sm-8">
+                    <input type="text" formControlName="description" class="form-control" placeholder="Description"/>
+                    <span class="help-block" style="color:red">
+                      
+                    </span>
+                  </div>
+                </div>
+                <div class="row form-group">
+                  <label class="col-sm-4 label-title">Status </label>
+                  <div class="col-sm-8">
+                    <select id="status" formControlName="status" class="form-control">
+                      <option value="" disabled>Select ..</option>
+                      <option value="opened">Opened</option>
+                      <option value="closed">Closed</option>
+                    </select>
+                    <span class="help-block" style="color:red">
+                      <span *ngIf="postForm.controls.status.touched && postForm.controls.status.errors != null">
+                        Please Select Status
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+          <!-- form -->
+          <div class="buttons">
+            <button *ngIf="!newFlag" (click)="save()" class="btn btn-primary" [disabled]="!postForm.valid">Update</button>
+            <button *ngIf="newFlag" (click)="saveNew()" class="btn btn-primary" [disabled]="!postForm.valid">Save</button>
+            <button (click)="clear()" class="btn btn-danger">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

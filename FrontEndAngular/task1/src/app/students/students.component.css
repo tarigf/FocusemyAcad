@@ -1,0 +1,10 @@
+.button {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.add {
+  text-align: right;
+}
+.table-responsive {
+  margin-top: 20px;
+}
