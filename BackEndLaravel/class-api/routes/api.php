@@ -17,28 +17,6 @@ use App\Http\Controllers\PostApiController;
 |
 */
 
-Route::get('/user-all',[PostApiController::class, 'index']);
-Route::get('/user-find/{id}',[PostApiController::class, 'find']);
-Route::post('/SignInAccess',[PostApiController::class, 'authenticate']);
-Route::post('/SignInAccessAdmin',[PostApiController::class, 'authenticateAdmin']);
-Route::post('/register',[PostApiController::class, 'create']);
-
-Route::post('/getJobposteddetails',[PostApiController::class, 'allJobs']);
-Route::post('/getUsersList',[PostApiController::class, 'allUsers']);
-Route::get('/getChartData',[PostApiController::class, 'chartData']);
-Route::post('/getSearchUserData',[PostApiController::class, 'searchUser']);
-
-
-Route::post('/jobApply',[PostApiController::class, 'jobApply']);
-Route::post('/jobDelete',[PostApiController::class, 'jobDelete']);
-Route::post('/createJob',[PostApiController::class, 'createJob']);
-Route::post('/updateJob',[PostApiController::class, 'updateJob']);
-Route::post('/getjob',[PostApiController::class, 'getJob']);
-Route::post('/getApplicantsList',[PostApiController::class, 'applicantsList']);
-Route::post('/getJobsearchbuttondetails',[PostApiController::class, 'searchJob']);
-
-Route::post('/myportal',[PostApiController::class, 'updatePortal']);
-Route::post('/getportal',[PostApiController::class, 'getPortal']);
 
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
